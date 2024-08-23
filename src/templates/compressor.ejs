@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html Lang="en" >
+
+  <head>
+    <meta charset="UTF-8">
+    
+
+    <style type="text/css">
+      h1 {font-size: 8pt;}
+      p {margin:10; margin-bottom: 8; font-size: 7pt;}
+      table, td {
+        border-top: 1px solid #b3b3b3;
+        border-bottom: 1px solid #b3b3b3;
+        border-collapse: collapse;
+        font-size: 8pt;
+      }
+      td p {
+        font-size: 8pt;
+      }
+      th {
+        border-bottom: 1px solid #a3a3a3;
+        border-collapse: collapse;
+        background-color: #e3e3e3;
+        font-size: 7pt;
+      }
+      .imgLogo{
+        height: 30px;
+      }
+      .imgItens{
+        image-orientation:from-image;
+        height: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="Docheader">
+      <table style="width: 100%;border: 0;">
+      <tr>
+        <td style="border: 0;">
+          <h1>REGISTRO FOTOGRÁFICO – COMPRESSOR - SUPERFRIO</h1>
+        </td>
+        <td style="border: 0;">
+          <img src="https://superfrio.netlify.app/static/media/logo.a6ef6318.png" class="imgLogo">
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 0;">&nbsp;</td>
+        <td style="border-bottom: 0;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border: 0;width: 70%;"></td>
+        <td style="border: 0;width: 30%;"><strong><p>OS: <%= checklist.nos %> </p></strong></td>
+      </tr>
+      </table>
+      
+      <br/>
+      
+            
+      <table class="Dados" style="width:100%; border-bottom:0">
+        <tr>
+          <th colspan="3">Informações Gerais</th>
+        </tr>
+        <tr>
+          <td style="width:60%">
+            <p><strong>Cliente:</strong> <%= checklist.idcliente.nome %></p>
+            <p><strong>Cidade / UF:</strong> <%= checklist.idcliente.cidade %> / <%= checklist.idcliente.uf %></p>
+          </td>
+          <td style="width:40%">
+            <p><strong>Data Entrada:</strong> <%= dataentrada %></p>
+            <p><strong>Garantia?:</strong> <%= checklist.garantia == false ? "Não" : "Sim"%></p>
+          </td>
+          <tr>
+            <th colspan="3">Informações do Compressor</th>
+          </tr>
+          <td style="border: 0;width: 60%;">
+            <p><strong>Fabricante:</strong> <%= checklist.idfabricante.nome %></p>
+            <p><strong>Modelo:</strong> <%= checklist.idcompressor.modelo %></p>
+            <p><strong>Tensão:</strong> <%= checklist.tensao %></p>
+          </td>
+          <td style="border: 0;width: 40%;">
+            <p><strong>N. Série:</strong> <%= checklist.nserie %></p>
+            <p><strong>N. Ativo:</strong> <%= checklist.nativo %></p>
+            <p><strong>Gás:</strong> <%= checklist.gas %></p>
+          </td>
+          
+        </tr>
+      </table>
+     
+      
+    </div>
+    <div class="ItensChecklist">
+      <table style="width:100%">
+        <!-- <tr>
+          <th>Foto</th>
+          <th>Item</th>
+          <th>Avaliação</th>
+        </tr> -->
+        <tr>
+          <th colspan="3">Avarias</th>
+        </tr>
+        
+        <% for(var i=0; i < 7; i++) { %>
+
+          <tr>
+            <td style="width: 25%;"><img src="<%= checklistItens[i].foto == null ? 'https://triunfo.pe.gov.br/pm_tr430/wp-content/uploads/2018/03/sem-foto-300x300.jpg' : checklistItens[i].foto %>" class="imgItens"/></td>
+            <td style="width: 35%;"><p><%= checklistItens[i].nomeitem %></p></td>
+            <td style="width: 40%;"><p><%= checklistItens[i].avaliacao == 0 ? "Bom" : checklistItens[i].avaliacao == 1 ? "Ruim" : "Faltante" %> <%= checklistItens[i].comentario ? ' - ' + checklistItens[i].comentario : '' %> </p></td>
+          </tr>
+
+        <% } %>
+      </table>
+      
+      <div style="page-break-before:always;"></div>
+        
+      <table style="width:100%;margin-top: 10px;">
+        <% for(var i=7; i < 19; i++) { %>
+
+          <tr>
+            <td style="width: 25%;"><img src="<%= checklistItens[i].foto == null ? 'https://triunfo.pe.gov.br/pm_tr430/wp-content/uploads/2018/03/sem-foto-300x300.jpg' : checklistItens[i].foto %>" class="imgItens"/></td>
+            <td style="width: 35%;"><p><%= checklistItens[i].nomeitem %></p></td>
+            <td style="width: 40%;"><p><%= checklistItens[i].avaliacao == 0 ? "Bom" : checklistItens[i].avaliacao == 1 ? "Ruim" : "Faltante" %> <%= checklistItens[i].comentario ? ' - ' + checklistItens[i].comentario : '' %> </p></td>
+          </tr>
+  
+          <% } %>
+
+      </table>
+
+      <div style="page-break-before:always;"></div>
+
+      <table style="width:100%;margin-top: 10px;">
+        <% for(var i=19; i < 31; i++) { %>
+
+          <tr>
+            <td style="width: 25%;"><img src="<%= checklistItens[i].foto == null ? 'https://triunfo.pe.gov.br/pm_tr430/wp-content/uploads/2018/03/sem-foto-300x300.jpg' : checklistItens[i].foto %>" class="imgItens"/></td>
+            <td style="width: 35%;"><p><%= checklistItens[i].nomeitem %></p></td>
+            <td style="width: 40%;"><p><%= checklistItens[i].avaliacao == 0 ? "Bom" : checklistItens[i].avaliacao == 1 ? "Ruim" : "Faltante" %> <%= checklistItens[i].comentario ? ' - ' + checklistItens[i].comentario : '' %> </p></td>
+          </tr>
+  
+          <% } %>
+
+      </table>
+
+      <div style="page-break-before:always;"></div>
+
+      <table style="width:100%;margin-top: 10px;">
+        <% for(var i=31; i < itensLength; i++) { %>
+
+          <tr>
+            <td style="width: 25%;"><img src="<%= checklistItens[i].foto == null ? 'https://triunfo.pe.gov.br/pm_tr430/wp-content/uploads/2018/03/sem-foto-300x300.jpg' : checklistItens[i].foto %>" class="imgItens"/></td>
+            <td style="width: 35%;"><p><%= checklistItens[i].nomeitem %></p></td>
+            <td style="width: 40%;"><p><%= checklistItens[i].avaliacao == 0 ? "Bom" : checklistItens[i].avaliacao == 1 ? "Ruim" : "Faltante" %> <%= checklistItens[i].comentario ? ' - ' + checklistItens[i].comentario : '' %> </p></td>
+          </tr>
+  
+          <% } %>
+
+      </table>
+
+    </div>
+    
+    
+
+    <table class="respTecnico" style='width:100%;border: 0;'>
+      <tr>
+        <th>Comentários:</th>
+      </tr>
+     <tr>
+        <td>
+          <p><%= checklist.comentarios %></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>&nbsp;</p>
+        </td>
+      </tr>
+      </tr>
+      
+    </table>
+      <br/>
+      <br/>
+
+    <table class="respTecnico" style='width:40%;border-top: 0;border-bottom: 0;'>
+      <tr>
+        <!-- <td style='border-top: 0;'><p><%= checklist.nomeusuario %></p></td> -->
+        <td style='border-top: 0;'><p>Marco Aurélio de Sousa</p></td>
+      </tr>  
+      <tr>
+        <td  style='border-bottom: 0;'><p><strong>Responsável - Laudo</strong></p></td>
+      </tr>  
+    </table>
+
+    </div>
+  </body>
+</html>

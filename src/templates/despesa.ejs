@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html Lang="en" >
+
+  <head>
+    <meta charset="UTF-8">
+    
+
+    <style type="text/css">
+      h1 {font-size: 8pt;}
+      p {margin:10; margin-bottom: 8; font-size: 7pt;}
+      table, td {
+        border-top: 1px solid #b3b3b3;
+        border-bottom: 1px solid #b3b3b3;
+        border-collapse: collapse;
+        font-size: 8pt;
+      }
+      td p {
+        font-size: 8pt;
+      }
+      th {
+        border-bottom: 1px solid #a3a3a3;
+        border-collapse: collapse;
+        background-color: #e3e3e3;
+        font-size: 7pt;
+      }
+      .imgLogo{
+        height: 30px;
+      }
+      .imgItens{
+        image-orientation:from-image;
+        height: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="Docheader">
+      <table style="width: 100%;border: 0;">
+      <tr>
+        <td style="border: 0;">
+          <h1>RELATÓRIO DE DESPESAS - SUPERFRIO</h1>
+        </td>
+        <td style="border: 0;">
+          <img src="https://superfrio.netlify.app/static/media/logo.a6ef6318.png" class="imgLogo">
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 0;">&nbsp;</td>
+        <td style="border-bottom: 0;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border: 0;width: 70%;"></td>
+        <td style="border: 0;width: 30%;"><strong><p>Número: <%= checklist.numero %> </p></strong></td>
+      </tr>
+      </table>
+      
+      <br/>
+      
+            
+      <table class="Dados" style="width:100%; border-bottom:0">
+        <tr>
+          <th colspan="3">Informações Gerais</th>
+        </tr>
+        <tr>
+          <td style="width:60%">
+            <p><strong>Requisitante:</strong> <%= checklist.nomerequester %></p>
+            <p><strong>Aprovador:</strong> <%= checklist.nomeaprovador %></p>
+            <p><strong>Valor:</strong> <%= valor %></p>
+          </td>
+          <td style="width:40%">
+            <p><strong>Criado em:</strong> <%= dataentrada %></p>
+            <p><strong>Status:</strong> <%= checklist.status == 2 ? "Finalizado" : "Reprovado" %></p>
+          </td>
+          
+        </tr>
+      </table>
+     
+      
+    </div>
+    <div class="ItensChecklist">
+      <table style="width:100%">
+        <!-- <tr>
+          <th>Foto</th>
+          <th>Item</th>
+          <th>Avaliação</th>
+        </tr> -->
+        <tr>
+          <th colspan="4">NF's / Recibos</th>
+        </tr>
+        
+        <% for(var i=0; i < itensLength; i++) { %>
+
+          <tr>
+            <td style="width: 25%;"><img src="<%= checklistItens[i].foto == null ? 'https://triunfo.pe.gov.br/pm_tr430/wp-content/uploads/2018/03/sem-foto-300x300.jpg' : checklistItens[i].foto %>" class="imgItens"/></td>
+            <td style="width: 20%;"><p><%= checklistItens[i].categoriaText %></p></td>
+            <td style="width: 30%;"><p><%= checklistItens[i].descr %></p></td>
+            <td style="width: 25%;"><p><%= new Intl.NumberFormat('pt-br',{style: 'currency', currency:'BRL'}).format(checklistItens[i].valor)%> </p></td>
+          </tr>
+
+        <% } %>
+      </table>
+    
+      </table>
+
+      <div style="page-break-before:always;"></div>
+
+    </div>
+    
+
+    </div>
+  </body>
+</html>

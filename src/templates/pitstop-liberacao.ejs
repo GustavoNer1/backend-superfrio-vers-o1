@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html Lang="en" >
+
+  <head>
+    <meta charset="UTF-8">
+    
+
+    <style type="text/css">
+      h1 {font-size: 9pt;}
+      p {margin:10; margin-bottom: 8; font-size: 8pt;}
+      table, td {
+        border-top: 1px solid #b3b3b3;
+        border-bottom: 1px solid #b3b3b3;
+        border-collapse: collapse;
+        font-size: 8pt;
+      }
+      td p {
+        font-size: 8pt;
+      }
+      th {
+        border-bottom: 1px solid #a3a3a3;
+        border-collapse: collapse;
+        background-color: #e3e3e3;
+        font-size: 8pt;
+      }
+      .imgLogo{
+        height: 30px;
+      }
+      .imgItens{
+        height: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="Docheader">
+      <table style="width: 100%;border: 0;">
+      <tr>
+        <td style="border: 0;">
+          <h1>REGISTRO FOTOGRÁFICO – PIT STOP - LIBERAÇÃO</h1>
+        </td>
+        <td style="border: 0;">
+          <img src="https://superfrio.netlify.app/static/media/logo.a6ef6318.png" class="imgLogo">
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 0;">&nbsp;</td>
+        <td style="border-bottom: 0;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border: 0;"></td>
+        <td style="border: 0;"><strong>Controle ID: <%= checklist.controlid %> </strong></td>
+      </tr>
+      </table>
+      
+      <br/>
+            
+      <table class="Dados" style="width:100%; border-bottom:0">
+        <tr>
+          <th colspan="3">Informações Gerais</th>
+        </tr>
+        <tr>
+          <td>
+            <p><strong>Data Entrada:</strong> <%= checklist.dataentrada %></p>
+            <p><strong>N. Série:</strong> <%= checklist.nserie %></p>
+          </td>
+          <td style="border: 0;">
+            <p><strong>CNPJ:</strong> <%= checklist.CNPJ %></p>
+            <p><strong>Razão SocialModelo:</strong> <%= checklist.rsocial %></p>
+          </td>
+        </tr>
+      </table>
+     
+      
+    </div>
+    <div class="ItensChecklist">
+      <table style="width:100%">
+        <!-- <tr>
+          <th>Foto</th>
+          <th>Item</th>
+          <th>Avaliação</th>
+        </tr> -->
+        <tr>
+          <th colspan="3">Avaliação</th>
+        </tr>
+
+        <% for(var i=0; i < checklistItens.length; i++) { %>
+
+        <tr>
+          <td><img src="<%= checklistItens[i].foto %>" class="imgItens"/></td>
+          <td><p><%= checklistItens[i].nomeitem %></p></td>
+          <td><p><%= checklistItens[i].avaliacao == 0 ? "Bom" : checklistItens[i].avaliacao == 1 ? "Ruim" : "Faltante" %> <%= checklistItens[i].comentario ? ' - ' + checklistItens[i].comentario : '' %> </p></td>
+        </tr>
+
+        <% } %>
+      
+      </table>
+    </div>
+    
+
+    <table class="respTecnico" style='width:100%;border: 0;'>
+      <tr>
+        <th>Comentários:</th>
+      </tr>
+      <tr>
+        <td>
+          <p><%= checklist.comentarios %></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>&nbsp;</p>
+        </td>
+      </tr>
+      </tr>
+      
+    </table>
+      <br/>
+      <br/>
+
+    <table class="respTecnico" style='width:40%;border-top: 0;border-bottom: 0;'>
+      <tr>
+        <td style='border-top: 0;'><p><%= checklist.nomeusuario %></p></td>
+      </tr>  
+      <tr>
+        <td  style='border-bottom: 0;'><p><strong>Responsável - Laudo</strong></p></td>
+      </tr>  
+    </table>
+
+
+    </div>
+  </body>
+</html>
